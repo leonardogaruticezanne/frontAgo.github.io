@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+	margin:0px;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.start {
+	/*position: absolute;*/
+    /* min-width: 100%; */
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+.div_table {
+	position: fixed;
+	width:100%;  
+	heigth:	30px; 
+	z-index:100; 
+	display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+	font-family: Helvetica, Sans-Serif;
+	font-color: rgb(138,8,47);
+	padding-top: 10px;
+	}
+
+.div_logo {
+	max-width:30%;
+	position: fixed;
+	top:10px;
+	left:3%;
+	z-index:100; 
+	display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+	font-family: Helvetica, Sans-Serif;
+	font-color: rgb(138,8,47);
+	padding-top: 10px;
+	}
+
+.t_table {
+	width:70%; 
+	heigth:100%; 
+	margin:opx;
+	}
+
+.font_button_style {
+	font-family: 'Arial';
+	font-size:large;
+	color: rgb(138,8,47);
+}
+
+.button_style {
+	width:25%;
+	}
+
+.logo_button_style {
+	max-width:10%;
+	max-height:auto;
+	}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+#background {position: relative; z-index:-100;}
+.font {
+    --menuTotalBordersX: 0px;
+    --menuTotalBordersY: 0px;
+    --bgDrop: var(--color_14);
+    --rd: 30px 30px 30px 30px;
+    --shd: 8.49px 8.49px 11px 11px rgba(138,8,47,1);
+    --fnt: normal normal 700 24px/1.4em helvetica-w01-roman,helvetica-w02-roman,helvetica-lt-w10-roman,sans-serif;
+    --pad: 5px;
+    --txt: 138,8,47;
+    --trans: color 0.4s ease 0s;
+    --txth: 67,102,7;
+    --txts: 138,8,47;
+    --alpha-txt: 1;
+    --alpha-bgDrop: 0.6;
+    --alpha-txth: 1;
+    --alpha-txts: 1;
+	}
+
+.big_center_button{
+    width: 50%;
+    border: 2px solid rgb(138,8,47);
+    padding: 0px 30px 0px 30px;
+    /* display: inline-block; */
+}
+
+.big_center_button_position {
+	
+	display: flex;
+	margin: 23% 10% 25% 10% !important;
+	background: rgba(0,0,0,0);
+	color: rgb(138,8,47);
+    font-family: HikouRegular–Bold;/*helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;*/
+    font-style: normal;
+    font-size: xxx-large;
+    font-stretch: 100%;
+	justify-content: center;
+    flex-direction: row;
+    align-content: center;
+}
+
+.big_center_button:hover {
+    width: 52%;
+    border: 3px solid rgb(138,8,47);
+    padding: 0px 35px 0px 35px;
+	cursor: pointer;
+}
+
+
+.border-radius {
+	-moz-border-radius: 100px; /* firefox */
+	-webkit-border-radius: 100px; /* safari, chrome */
+	border-radius: 100px;
+}
+
+.shadow:hover {
+  box-shadow: 10px 10px 5px rgb(138,8,47);
+}
+
+.start_table {
+	min-width:100%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	border: 4px solid rgba(0,0,0,0);
+}
+
+.in_start_table{
+	width:99%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	font-family: helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;
+    font-style: normal;
+    font-size: x-large;
+    font-stretch: 100%;
+	color: rgb(138,8,47);
+	background-color:rgb(247, 217, 181);
+}
+
+.table_row{
+	max-width:100%; 
+	min-width: 100%;
+	display:flex;
+	border:4px solid rgba(0,0,0,0);
+}
+
+.table_cell{
+	background-color:rgb(247, 217, 181);
+	width:50%;
+	display:flex;
+	align-content: center;
+	min-height: 50px;
+	margin: 5px;
+}
+
+.second_table_cell{
+	background-color:rgba(0,0,0,0);
+	width:50%;
+	display:flex;
+	align-content: center;
+	min-height: 50px;
+	margin: 5px;
+	align-items: center;
+}
+
+.in_table_cell{
+	width: 100%;
+	display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.second_table_row{
+	min-width:70%; 
+	display:flex;
+	justify-content: center;
+	border:4px solid rgba(0,0,0,0);
+}
+
+.fourth_table_row{
+	min-width:100%; 
+	border:4px solid rgba(0,0,0,0);
+}
+
+.fourth_table_cell{
+	background-color:rgb(247, 217, 181);
+	width:100%;
+	display:flex;
+	align-content: center;
+	justify-content: center;
+	min-height: 50px;
+	margin: 5px;
+}
+
+.init{
+	max-width:100%;
+ 	min-width:100%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.left{
+	    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.right{
+	display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.table_cell_img{
+	background-color:rgb(247, 217, 181);
+	width:50%;
+	display:flex;
+	align-content: center;
+	min-height: 50px;
+	margin: 5px;
+}
+
+
+.font{
+	font-family: helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;
+    font-style: normal;
+    font-stretch: 100%;
+	justify-content: center;
+    flex-direction: row;
+    align-content: center;
+	color: rgb(138,8,47);
+}
+
+.position{
+    max-width: 75%;
+    min-width: 70%;
+	font-family: helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;
+    font-style: normal;
+    font-stretch: 100%;
+	justify-content: flex-end;
+    flex-direction: row;
+    align-content: center;
+	color: rgb(138,8,47);
+}
+
+.font_size_large{
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    /* margin: 5%; */
+    /* padding-bottom: 10%; */
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.font_size_xxlarge{
+	font-size: xx-large;
+}
+
+
+.bg-text {
+    font-weight: bold;
+    width: 100%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	}
+
+#firstPar{
+	background-image: url('batecchiBlur.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#secondPar{
+	background-image: url('ciboBlur.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#thirdPar{
+	background-image: url('bambinoBlur.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#fourthPar{
+	background-image: url('neuBlur.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#fifthPar{
+	background-image: url('dottoressaBlur.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#sixthPar{
+	background-image: url('punturaBlur.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#seventhPar{
+	background-image: url('sedieBlur.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.maxWidth{
+	max-width: 100%;
+}
+
+.all_first_par{
+	display: flex; 
+	width: 100%; 
+	flex-direction: column; 
+	/*align-items: center; */
+	/* height: 100%;*/
+}
+
+.title_first_par{
+	display: flex;
+	width: 100%; 
+	min-height: 50%; 
+	flex-direction: column; 
+	align-items: center; 
+	text-align:center
+}
+
+.body_first_par{
+	display:flex; 
+	flex-direction:column; 
+	align-items: center;
+}
+
+ul{
+	list-style:none;
+}
+
+@media screen and (max-width: 1200px){
+	.position{
+		display:none;
+	}
+	.font_size_large {
+		font-size: 3vw;
+		display: flex;
+		flex-direction: column;
+		/* margin: 5%; */
+		/* padding-bottom: 10%; */
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	.font_size_xxlarge {
+		font-size: 3vw;
+		display: flex;
+		flex-direction: column;
+		/* margin: 5%; */
+		/* padding-bottom: 10%; */
+		align-items: center;
+		justify-content: flex-start;
+	}
+	
+	.font_size_xxlarge {
+		font-size: 3vw;
+	}
+	
+	.font {
+		font-family: helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;
+		font-style: normal;
+		font-stretch: 50%;
+		font-weight: bold;
+		justify-content: center;
+		flex-direction: row;
+		align-content: center;
+		color: rgb(138,8,47);
+	}
+	
+	.all_first_par{
+		display: flex; 
+		width: 100%; 
+		flex-direction: column; 
+		align-items: center !important;
+		/* height: 100%;*/
+	}
+	
+	.title_first_par{
+		display: flex;
+		width: 90%; 
+		min-height: 50%; 
+		flex-direction: column; 
+		align-items: center; 
+		text-align:center;
+		font-size: 3vw;
+	}
+
+	.body_first_par{
+		display:flex; 
+		flex-direction:column; 
+		align-items: flex-start;
+	}
+	
+	ul{
+		padding:0px;
+		margin:0px;
+	}
+	
+	.body_second_par{
+		max-width:80%;
+		display:flex; 
+		flex-direction:column; 
+		align-items: flex-start;
+	}
+}
+</style>
+<title>
+	main Page
+</title>
+</head>
+<body class="prevent-select">
+<div style="max-width: 99.6%;">
+<div id="home">
+</div>
+	<div class="div_logo">
+		<th class="logo_button_style">
+		<a href="#home" class="font_button_style">
+			<img  src="logo.png" alt="ImAgO&#13Medicina Integrata&#13Agopuntura&#13Oncologia" style="max-width:100%">
+		</a>
+	</th>
+	</div>
+	<div class="div_table font position">
+		<table class="t_table">
+			<tr class="t_table">
+				<th class="button_style">
+					<a href="#aree-terapeutiche" class="font_button_style">Aree terapeutiche</a>
+				</th>
+				<th class="button_style">
+					<a href="#chi-siamo" class="font_button_style">Chi Siamo</a>
+				</th>
+				<th class="button_style">
+					<a href="#patologie" class="font_button_style">Patologie</a>
+				</th>
+				<th class="button_style">
+					<a href="#contatti" class="font_button_style">Contattaci</a>
+				</th>
+			</tr>
+		</table>
+	</div>
+
+<div class="start">
+	<div id="background">
+		<video autoplay muted loop id="myVideo">
+			<source src="file.mp4" type="video/mp4">
+		</video>
+	</div>
+	<button type="button" class="big_center_button border-radius shadow big_center_button_position font_button_style">
+		PRENOTA UNA VISITA
+	</button>
+</div>
+
+<div id="aree-terapeutiche" class="init">
+	<div class="start_table" >
+		<div class="in_start_table">
+			<h2>Aree terapeutiche</h2>
+		</div>
+	</div>
+    <div class="table_row">
+		<div class="table_cell">
+			<div class="in_table_cell right">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Agopuntura
+					</div>
+					<div class="body_first_par font font_size_large">
+						<ul class="font" style="list-style: none;">
+							<li>Agopuntura Somatica</li>
+							<li>Agopuntura dei Micro Sistemi</li>
+						</ul>
+						<!--<span style="display:flex; flex-direction: row; " class="font">Agopuntura Somatica</span>-->
+
+						<!--<span style="display:flex; flex-direction: row; " class="font">Agopuntura dei Micro Sistemi</span>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="bg-text" id="firstPar" >
+				<img src="batecchi.png" alt="Agopuntura" class="maxWidth"> 
+			</div>
+		</div>
+	</div>
+	<div class="table_row">
+		<div class="table_cell">
+			<div class="bg-text"id="secondPar">
+				<img src="cibo.png" alt="Dieta" class="maxWidth"> 
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="in_table_cell left">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Dietetica Cinese
+					</div>
+					<div class="body_first_par font font_size_large">
+						<ul class="font">
+							<li>Energetica degli Elementi</li>
+							<li>Dietetica Clinica</li>
+						</ul>
+						<!--<span style="display:flex; flex-direction: row; " class="font">Energetica degli Elementi</span>-->
+
+						<!--<span style="display:flex; flex-direction: row; " class="font">Dietetica Clinica</span>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="table_row">
+		<div class="table_cell">
+			<div class="in_table_cell right">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Supporto alla Fertilità naturale ed assistita
+					</div>
+					<div class="body_first_par font font_size_large">
+						<ul>
+							<li class="font">Favorire la Gravidanza</li>
+							<li class="font">Riduzione del Rischio Abortivo</li>
+						</ul>
+						<!--<span style="display:flex; flex-direction: row; " class="font">Favorire la Gravidanza</span>-->
+
+						<!--<span style="display:flex; flex-direction: row; " class="font">Riduzione del Rischio Abortivo</span>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="bg-text" id="thirdPar" >
+				<img src="bambino.png" alt="Gravidanza" class="maxWidth"> 
+			</div>
+		</div>
+	</div>
+	<div class="table_row">
+		<div class="table_cell">
+			<div class="bg-text"id="fourthPar">
+				<img src="neu.png" alt="Dieta" class="maxWidth"> 
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="in_table_cell left">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Prevenzione e Sorveglianza Oncologica
+					</div>
+					<div class="body_first_par font font_size_large">
+						<ul>
+							<li class="font">Aggiungere elemento</li>
+							<li class="font">Aggiungere elemento</li>
+						</ul>
+						<!--<span style="display:flex; flex-direction: row; " class="font">Favorire la Gravidanza</span>-->
+
+						<!--<span style="display:flex; flex-direction: row; " class="font">Riduzione del Rischio Abortivo</span>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="table_row">
+		<div class="table_cell">
+			<div class="in_table_cell right">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Nutrizione e Dietetica 
+					</div>
+					<div class="body_first_par font font_size_large">
+						<ul>
+							<li class="font">Aggiungere elemento</li>
+							<li class="font">Aggiungere elemento</li>
+						</ul>
+						<!--<span style="display:flex; flex-direction: row; " class="font">Favorire la Gravidanza</span>-->
+
+						<!--<span style="display:flex; flex-direction: row; " class="font">Riduzione del Rischio Abortivo</span>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="bg-text" id="fifthPar" >
+				<img src="dottoressa.png" alt="Gravidanza" class="maxWidth"> 
+			</div>
+		</div>
+	</div>
+	<div class="table_row">
+		<div class="table_cell">
+			<div class="bg-text"id="sixthPar">
+				<img src="puntura.png" alt="Dieta" class="maxWidth"> 
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="in_table_cell left">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Medicina estetica
+					</div>
+					<div class="body_first_par font font_size_large">
+						<ul>
+							<li class="font">Aggiungere elemento</li>
+							<li class="font">Aggiungere elemento</li>
+						</ul>
+						<!--<span style="display:flex; flex-direction: row; " class="font">Favorire la Gravidanza</span>-->
+
+						<!--<span style="display:flex; flex-direction: row; " class="font">Riduzione del Rischio Abortivo</span>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="table_row">
+		<div class="table_cell">
+			<div class="in_table_cell right">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Psicoterapia e Mindfulness
+					</div>
+					<div class="body_first_par font font_size_large">
+						<ul>
+							<li class="font">Aggiungere elemento</li>
+							<li class="font">Aggiungere elemento</li>
+						</ul>
+						<!--<span style="display:flex; flex-direction: row; " class="font">Favorire la Gravidanza</span>-->
+
+						<!--<span style="display:flex; flex-direction: row; " class="font">Riduzione del Rischio Abortivo</span>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="bg-text" id="seventhPar" >
+				<img src="sedie.png" alt="Gravidanza" class="maxWidth"> 
+			</div>
+		</div>
+	</div>
+</div>
+<div id="chi-siamo" class="init">
+	<div class="start_table" >
+		<div class="in_start_table">
+			<h2>Chi Siamo</h2>
+		</div>
+	</div>
+	<div class="second_table_row">
+		<div class="second_table_cell">
+			<div class="bg-text">
+				<img src="annaFedeli.png" alt="Anna Fedeli" class="maxWidth"> 
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="in_table_cell left">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Anna Fedeli
+					</div>
+					<div class="body_second_par font font_size_large">
+						<ul>
+							<li class="font">Specialista in Oncologia</li>
+							<li class="font">Specialista in Farmacologia</li>
+							<li class="font">Master Universitario in Agopuntura</li>
+							<li class="font">Master di agopuntura per infertilità e PMA</li>
+						<ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="second_table_row">
+		<div class="second_table_cell">
+			<div class="bg-text">
+				<img src="antonellaScalognini.png" alt="Antonella Scalognini" class="maxWidth"> 
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="in_table_cell left">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Antonella Scalognini
+					</div>
+					<div class="body_second_par font font_size_large">
+						<ul class="font">
+							<li class="font">Medico Psicoterapeuta ad indirizzo cognitivista</li>
+							<li class="font">Esperta in Conseling</li>
+							<li class="font">Istruttrice MBSR</li>
+							<li class="font">Formatrice</li>
+						<ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="second_table_row">
+		<div class="second_table_cell">
+			<div class="bg-text">
+				<img src="yasminHandouk.png" alt="Yasmin Handouk" class="maxWidth"> 
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="in_table_cell left">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Yasmin Handouk
+					</div>
+					<div class="body_second_par font font_size_large">
+						<ul class="font">
+							<li class="font">Specialista in Neurologia</li>
+							<li class="font">Master Universitario in Agopuntura</li>
+						<ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="second_table_row">
+		<div class="second_table_cell">
+			<div class="bg-text">
+				<img src="massimilianoMonfrini.png" alt="Massimimliano Monfrini" class="maxWidth"> 
+			</div>
+		</div>
+		<div class="table_cell">
+			<div class="in_table_cell left">
+				<div class="all_first_par">
+					<div class="title_first_par font font_size_xxlarge">
+						Massimimliano Monfrini
+					</div>
+					<div class="body_second_par font font_size_large">
+						<ul class="font">
+							<li class="font">Biologo Nutrizionista</li>
+							<li class="font">Dietista</li>
+						<ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="patologie" class="init">
+	<div class="start_table" >
+		<div class="in_start_table">
+			<h2>Patologie</h2>
+		</div>
+	</div>
+</div>
+<div id="contatti" class="init">
+	<div class="start_table" >
+		<div class="in_start_table">
+			<h2>Contattaci</h2>
+		</div>
+	</div>
+	<div class="fourth_table_row">
+		<div class="fourth_table_cell">
+			<ul>
+				<li class="font">Via Pio Campana 71, Cesena (FC), Italia</li>
+				<li class="font">Email: af.agopuntura@email.com</li>
+				<li class="font">Tel: 375 615 1088</li>
+			<ul>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>
